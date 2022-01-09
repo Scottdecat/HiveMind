@@ -13,19 +13,18 @@ from bot.configuration.basic_configuration import BasicConfiguration
 from bot.hooks import Hooks, hooks
 from bot.services.eco_balance_service import EcoBalanceService
 from bot.services.pathing_service import PathingService
-#from .logic.army_strategy_manager.default_army_strategy_manager import DefaultArmyStrategyManager
 from bot.services.unit_type_service import UnitTypeService
 
 from .chat.chat_interface import ChatInterface
 from .configuration.basic_configuration import BasicConfiguration
 from .configuration.configuration_interface import ConfigurationInterface
-from .debug.debug_utils import PrintExecutionTime
 from .logic.logic_interface import LogicInterface
 from .model.unit_role import UnitRole
 from .services.action_service import ActionService
 from .services.debug_service import DebugService
 from .services.role_service import RoleService
 from .services.state_service import StateService
+from .util.time import PrintExecutionTime
 
 
 class MyBot(sc2.BotAI):
@@ -82,12 +81,6 @@ class MyBot(sc2.BotAI):
         await self.do_actions(actions)
 
         # render debug text for banners
-        #for banner in self.strategy.banners:
-        #    pos = banner.location
-        #    self.debug_service.text_world(f'Banner: {banner.requested_value - banner.assigned_value}', Point3((pos.x, pos.y, 10)), None, 12)
-        #for threat in self.state_service.threats:
-        #    pos = threat.location
-        #    self.debug_service.text_world(f'Threat: {threat.value}, {threat.ground_value}, {threat.air_value}, {threat.cloak_value}', Point3((pos.x, pos.y, 10)), None, 12)
         await self.debug_service.render_debug()
         self.action_service.clear()
         self.state_service.previous_iter_own_units = self.state_service.own_units

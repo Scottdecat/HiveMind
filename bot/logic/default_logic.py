@@ -10,8 +10,6 @@ from bot.logic.resource_manager.resource_manager_interface import \
 from bot.logic.unit_manager.unit_manager import UnitManager
 from bot.model.unit_type_abstraction import UnitTypeAbstraction
 from bot.services.action_service import ActionService
-#from bot.logic.army_strategy_manager.army_strategy_manager_interface import ArmyStrategyManagerInterface
-#from .army_tactics_manager.army_tactics_manager_interface import ArmyTacticsManagerInterface
 from bot.services.debug_service import DebugService
 from bot.services.eco_balance_service import EcoBalanceService
 from bot.services.state_service import StateService
@@ -24,7 +22,6 @@ from sc2.units import Units
 
 from .drone_micro import DroneMicro
 from .logic_interface import LogicInterface
-#from .army_micro_manager.army_micro_manager_interface import ArmyMicroManagerInterface
 from .overlord_manager import OverlordManager
 from .spending.spending_interface import SpendingInterface
 from .spending_actions.spending_actions_interface import \
@@ -43,9 +40,6 @@ class DefaultLogic(LogicInterface):
         self.state: StateService = injector.inject(StateService)
         self.bot: BotAI = injector.inject(BotAI)
         self.queen_manager: QueenManagerInterface = injector.inject(QueenManagerInterface)
-        #self.army_strategy_manager: ArmyStrategyManagerInterface = injector.inject(ArmyStrategyManagerInterface)
-        #self.army_tactics_manager: ArmyTacticsManagerInterface = injector.inject(ArmyTacticsManagerInterface)
-        #self.army_micro_manager: ArmyMicroManagerInterface = injector.inject(ArmyMicroManagerInterface)
 
         self.unit_manager = injector.inject(UnitManager)
 

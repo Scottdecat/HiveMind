@@ -225,7 +225,6 @@ class UnitManager:
         if not priorities.isEmpty():
             units = units.sorted(sort_by_diff, True)
         
-        ##
         for unit in units:
             unit: Unit
             sorted_enemy_groups = PriorityQueue()

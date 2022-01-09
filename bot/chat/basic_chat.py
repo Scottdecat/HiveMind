@@ -1,8 +1,10 @@
 import random
 
-from .chat_interface import ChatInterface
 import bot.injector as injector
+
 from ..services.chat_service import ChatService
+from .chat_interface import ChatInterface
+
 
 class BasicChat(ChatInterface):
     def __init__(self, *args, **kwargs):
@@ -13,11 +15,8 @@ class BasicChat(ChatInterface):
             await self.greet()
 
     async def greet(self):
-        await self.chat_service.send('14.7.2019 9:55')
-        """ 
-        msg = random.choice([
-            "When I'm done half of humanity will still exist.",
-            "Zerg is perfectly balanced, as all things should be."
-        ])
-        await self.chat_service.send(msg)
-        """
+        await self.chat_service.send('Hi, uh.. it would be kind of cool if you lost to the zerg army haha, we\'re pretty tough')
+        await self.chat_service.send('You should run in fear! *small and weak voice*')
+        await self.chat_service.send('Shut up zergling stop using the intercom')
+        await self.chat_service.send('*clears throat*')
+        await self.chat_service.send('I am the Swarm Lord, leader of the swarm, bow before me or be crushed by my hordes!')

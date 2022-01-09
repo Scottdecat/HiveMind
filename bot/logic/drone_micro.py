@@ -1,10 +1,10 @@
-from sc2 import UnitTypeId, AbilityId
-
-from bot.services.state_service import StateService
 import bot.injector as injector
 from bot.services.action_service import ActionService
 from bot.services.debug_service import DebugService
+from bot.services.state_service import StateService
 from bot.services.unit_type_service import UnitTypeService
+from sc2 import AbilityId, UnitTypeId
+
 
 class DroneMicro:
     def __init__(self):
@@ -20,13 +20,6 @@ class DroneMicro:
                 direction = threat.location.direction_vector(drones.center)
                 pos = drones.center + 10 * direction
                 self.action_service.command_group(drones, AbilityId.MOVE, pos, 15)
-            #closest_townhall = self.state.own_townhalls.closest_to(threat.location)
-            #if threat.location.distance_to(self.state.get_mineral_fields_for_expansion(closest_townhall.position).center) < 15 and threat.value > 140:
-            #    nearby_drones = self.state.own_units(UnitTypeId.DRONE).closer_than(10, closest_townhall.position)
-            #    if nearby_drones.exists:
-            #        direction = threat.location.direction_vector(nearby_drones.center)
-            #        pos = nearby_drones.center + 10 * direction
-            #        self.action_service.command_group(nearby_drones, AbilityId.MOVE, pos, 15)
         
         enemies_near_start = self.state.enemy_units.closer_than(10, self.state.main_minerals.center)
         if enemies_near_start.amount > 2:

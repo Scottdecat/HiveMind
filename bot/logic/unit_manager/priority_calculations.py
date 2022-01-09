@@ -43,16 +43,12 @@ unit_to_group_multipliers = [lambda x: math.log(x)]
 if not __name__ == '__main__':
     '''Make sure to run this file and copy what it outputs to these variables.
     The value of these variables is used when the bot runs.'''
-    #[[-68.3468428016, 287.3744213881], [100.0, -0.0]]
     enemy_group_priority = [[-43.4934454192, 190.1473590651], [100.0, -0.0]]
     enemy_group_priority = [turn_list_to_linear_func(weights, func) for weights, func in zip(enemy_group_priority, enemy_group_multipliers)]
 
     unit_to_group_priority = [[-166.5518726871, 605.1110995021]]
     unit_to_group_priority = [turn_list_to_linear_func(weights, func) for weights, func in zip(unit_to_group_priority, unit_to_group_multipliers)]
 else:
-    #data = (
-    # [[value_of_variable, desired_priority_for_value]]
-    # )
     def get_enemy_group_data():
         data = (
         [[50, 20], [10, (unit_desperation_threshold[UnitTypeId.QUEEN]/2)]],

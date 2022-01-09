@@ -1,17 +1,16 @@
-from typing import List, Dict
+from typing import Dict, List
 
-from sc2.position import Point2, Point3
-from sc2.units import Units
-from sc2 import BotAI
-
-from .army_strategy_manager_interface import ArmyStrategyManagerInterface
-from bot.services.state_service import StateService
 import bot.injector as injector
 from bot.services.action_service import ActionService
-from bot.util.unit_type_utils import calculate_combat_value, get_resource_value
 from bot.services.debug_service import DebugService
+from bot.services.state_service import StateService
+from bot.util.unit_type_utils import calculate_combat_value, get_resource_value
+from sc2 import BotAI
+from sc2.position import Point2, Point3
+from sc2.units import Units
 
-# Priority magnitude: 10
+from .army_strategy_manager_interface import ArmyStrategyManagerInterface
+
 
 class StrategicBanner():
     def __init__(self):
