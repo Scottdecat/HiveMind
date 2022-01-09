@@ -18,7 +18,7 @@ class StrategicBanner():
         self.location: Point2 = None
         self.requested_value: int = 0
         self.assigned_value: int = 0
-        self.assigned_units: Units = Units([], self.bot._game_data)
+        self.assigned_units: Units =Units([])
     
 
 # BEHOLD, MASSIVE HACKS AHEAD

@@ -57,7 +57,7 @@ class BuildManager():
         #TODO can further reduce boilerplate by letting the bot automatically figure out where bos are and what their names are
         if name in self._builds:
             custom_globals = {}
-            exec(f'from bot.logic.spending.build_order_v2.build_orders.{self._builds[name]}.{name} import build, comp', custom_globals)
+            exec(f'from bot.logic.spending.build_order.build_orders.{self._builds[name]}.{name} import build, comp', custom_globals)
             return custom_globals['build'], custom_globals['comp']
         else:
             raise AttributeError(f'build_manager.py.__getattr__: could not find attribute {name}')

@@ -45,7 +45,7 @@ class UnitGroupService():
             return groups
         if no_range:
             for unit in units:
-                groups.append(self.create_group(Units([unit], self.bot._game_data), no_range=True))
+                groups.append(self.create_group(Units([unit]), no_range=True))
             return groups
         unassigned: Units = units
         sub_groups: List[Units] = []
@@ -102,7 +102,7 @@ class NeighborFinder:
         self.unassigned = units
     def get_neighbors(self, unit: Unit) -> Units:
         """ including unit itself """
-        output: Units = Units([], self.bot._game_data)
+        output: Units =Units([])
         output.append(unit)
         max_range = get_max_range_of_unit(unit)
         max_range += unit.movement_speed * 2

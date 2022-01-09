@@ -2,30 +2,34 @@ import math
 import random
 from typing import List
 
-from sc2 import BotAI, UnitTypeId, AbilityId
-from sc2.ids.upgrade_id import UpgradeId
-from sc2.units import Units
-from sc2.position import Point2
-
-from .logic_interface import LogicInterface
 import bot.injector as injector
-from .spending.spending_interface import SpendingInterface
-from .spending_actions.spending_actions_interface import SpendingActionsInterface
-from bot.services.action_service import ActionService
+from bot.logic.queen_manager.queen_manager_interface import \
+    QueenManagerInterface
+from bot.logic.resource_manager.resource_manager_interface import \
+    ResourceManagerInterface
+from bot.logic.unit_manager.unit_manager import UnitManager
 from bot.model.unit_type_abstraction import UnitTypeAbstraction
-from bot.logic.resource_manager.resource_manager_interface import ResourceManagerInterface
-from bot.services.state_service import StateService
-from bot.logic.queen_manager.queen_manager_interface import QueenManagerInterface
-from bot.logic.unit_manager.unit_manager_v3 import UnitManager_v3
+from bot.services.action_service import ActionService
 #from bot.logic.army_strategy_manager.army_strategy_manager_interface import ArmyStrategyManagerInterface
 #from .army_tactics_manager.army_tactics_manager_interface import ArmyTacticsManagerInterface
 from bot.services.debug_service import DebugService
+from bot.services.eco_balance_service import EcoBalanceService
+from bot.services.state_service import StateService
+from bot.services.unit_type_service import UnitTypeService
+from bot.util.priority_queue import PriorityQueue
+from sc2 import AbilityId, BotAI, UnitTypeId
+from sc2.ids.upgrade_id import UpgradeId
+from sc2.position import Point2
+from sc2.units import Units
+
+from .drone_micro import DroneMicro
+from .logic_interface import LogicInterface
 #from .army_micro_manager.army_micro_manager_interface import ArmyMicroManagerInterface
 from .overlord_manager import OverlordManager
-from bot.services.eco_balance_service import EcoBalanceService
-from bot.util.priority_queue import PriorityQueue
-from bot.services.unit_type_service import UnitTypeService
-from .drone_micro import DroneMicro
+from .spending.spending_interface import SpendingInterface
+from .spending_actions.spending_actions_interface import \
+    SpendingActionsInterface
+
 
 class DefaultLogic(LogicInterface):
     def __init__(self):
@@ -43,7 +47,7 @@ class DefaultLogic(LogicInterface):
         #self.army_tactics_manager: ArmyTacticsManagerInterface = injector.inject(ArmyTacticsManagerInterface)
         #self.army_micro_manager: ArmyMicroManagerInterface = injector.inject(ArmyMicroManagerInterface)
 
-        self.unit_manager = injector.inject(UnitManager_v3)
+        self.unit_manager = injector.inject(UnitManager)
 
         self.drone_micro: DroneMicro = DroneMicro()
         self.overlord_manager: OverlordManager = OverlordManager()

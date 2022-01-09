@@ -29,8 +29,8 @@ class ThreatService():
         self.bot: BotAI = injector.inject(BotAI)
         self.unit_type: UnitTypeService = injector.inject(UnitTypeService)
         self.threats: List[Threat] = []
-        self.unassigned_units: Units = Units([], self.bot._game_data)
-        self.assigned_units: Units = Units([], self.bot._game_data)
+        self.unassigned_units: Units =Units([])
+        self.assigned_units: Units =Units([])
 
     def detect_threats(self, enemy_army_units: Units):
         self.threats = self.create_threats(enemy_army_units)
@@ -114,7 +114,7 @@ class NeighborFinder:
         self.unassigned = units
     def get_neighbors(self, unit: Unit) -> Units:
         """ including unit itself """
-        output: Units = Units([], self.bot._game_data)
+        output: Units =Units([])
         output.append(unit)
         max_range = max([unit.ground_range, unit.air_range])
         if unit.type_id == UnitTypeId.COLOSSUS:

@@ -23,7 +23,7 @@ class DefaultSpendingActions(SpendingActionsInterface):
         self.debug: DebugService = injector.inject(DebugService)
     
     async def build(self, spending_list: List, units: Units) -> 'assigned Units':
-        assigned = Units([], self._bot._game_data)
+        assigned = Units([])
 
         self.debug.text_screen_auto(f'{self.state.placement_requests}', 0, 4)
         for placement_request in self.state.placement_requests:

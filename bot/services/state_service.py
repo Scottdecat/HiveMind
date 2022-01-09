@@ -36,12 +36,12 @@ class StateService():
 
         self.resources = Resources()
 
-        self.previous_iter_own_units: Units = Units([], self._bot._game_data)
+        self.previous_iter_own_units: Units = Units([])
 
-        self.own_units: Units = Units([], self._bot._game_data)
-        self.enemy_units: Units = Units([], self._bot._game_data)
-        self.own_army_units: Units = Units([], self._bot._game_data)
-        self.enemy_army_units: Units = Units([], self._bot._game_data)
+        self.own_units: Units = Units([])
+        self.enemy_units: Units = Units([])
+        self.own_army_units: Units = Units([])
+        self.enemy_army_units: Units = Units([])
 
         self.build_queue = []
         self.enemy_tech: Set[UnitTypeId] = set()
@@ -62,7 +62,7 @@ class StateService():
         self.mode = 'defend'
 
     def on_first_iteration(self):
-        import bot.logic.spending.build_order_v2.bo_interpreter as bo_interpreter
+        import bot.logic.spending.build_order.bo_interpreter as bo_interpreter
         self.bo_interpreter = bo_interpreter
         from .state.army_composition_manager import ArmyCompositionManager
         self.army_composition: ArmyCompositionManager = ArmyCompositionManager()
@@ -358,7 +358,7 @@ class StateService():
             return 0
 
     def get_own_geysers(self) -> Units:
-        geysers: Units = Units([], self._bot._game_data)
+        geysers: Units = Units([])
         for townhall in self.own_townhalls.sorted_by_distance_to(self.game_info.start_location):
             temp = self._bot.state.vespene_geyser.closer_than(10, townhall)
             geysers.extend(temp)
@@ -375,7 +375,7 @@ class StateService():
         if exp.exists:
             return exp
         else:
-            return Units([], self._bot._game_data)
+            return Units([])
     
     def getTimeInSeconds(self) -> float:
         # returns real time if game is played on "faster"

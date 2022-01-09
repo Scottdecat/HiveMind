@@ -1,3 +1,11 @@
+This bot is the HiveMind
+Author: Scott Desai
+
+
+
+
+
+Takers inspiration from 
 # SLUDGEMENT 2
 
 ## Authors

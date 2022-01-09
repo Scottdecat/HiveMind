@@ -9,7 +9,7 @@ from bot.services.state_service import StateService
 from bot.model.unit_type_abstraction import UnitTypeAbstraction
 from bot.model.scouting_information import ScoutingInformation
 import bot.injector as injector
-from bot.logic.spending.build_order_v2.build_order_v2 import BORepository, BORunner, BOAction
+from bot.logic.spending.build_order.build_order import BORepository, BORunner, BOAction
 from bot.services.eco_balance_service import EcoBalanceService
 
 @hookable

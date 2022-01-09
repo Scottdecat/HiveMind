@@ -19,7 +19,7 @@ from bot.logic.logic_interface import LogicInterface
 from bot.logic.spending.spending_interface import SpendingInterface
 from bot.logic.spending_actions.spending_actions_interface import SpendingActionsInterface
 from bot.logic.spending.supply_mechanic.supply_mechanic_interface import SupplyMechanicInterface
-from bot.logic.unit_manager.unit_manager_v3 import UnitManager_v3
+from bot.logic.unit_manager.unit_manager import UnitManager
 from bot.logic.army_tactics_manager.army_tactics_manager_interface import ArmyTacticsManagerInterface
 from bot.logic.army_micro_manager.army_micro_manager_interface import ArmyMicroManagerInterface
 from bot.logic.army_strategy_manager.army_strategy_manager_interface import ArmyStrategyManagerInterface
@@ -55,7 +55,7 @@ class Injector():
         #self.d[ArmyMicroManagerInterface] = config.get(ArmyMicroManagerInterface)()
         #self.d[ArmyStrategyManagerInterface] = config.get(ArmyStrategyManagerInterface)()
         self.d[QueenManagerInterface] = config.get(QueenManagerInterface)()
-        self.d[UnitManager_v3] = UnitManager_v3()
+        self.d[UnitManager] = UnitManager()
         self.d[LogicInterface] = config.get(LogicInterface)()
 
     def inject(self, injectable) -> any:
