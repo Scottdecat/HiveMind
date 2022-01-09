@@ -57,7 +57,7 @@ class GroupTactics:
         self.debug_group(group)
 
         own_units = group.group.units
-        nearby_units = Units([], self.state._bot._game_data)
+        nearby_units = Units([])
 
         nearby_consider_threshold = 5
         for unit in own_units:

@@ -52,7 +52,7 @@ class UnitMemory:
     def __init__(self, bot):
         self.bot: BotAI = bot
         self.unit_observations: List[UnitObservation] = []
-        self.observed_enemy_units: Units = Units([], self.bot._game_data)
+        self.observed_enemy_units: Units =Units([])
 
     def iterate(self, time):
         # Update unit observations based on known enemy units
@@ -71,7 +71,7 @@ class UnitMemory:
                     self.unit_observations.append(UnitObservation(unit, ttl))
 
         # Update observed_enemy_units then remove old observations
-        temp: Units = Units([], self.bot._game_data)
+        temp: Units =Units([])
         to_remove = []
         for observation in self.unit_observations:
             temp.append(observation.unit)
@@ -84,7 +84,7 @@ class UnitMemory:
         for observation in to_remove:
             self.unit_observations.remove(observation)
         
-        self.observed_enemy_units: Units = Units(temp, self.bot._game_data)
+        self.observed_enemy_units: Units = Units(temp)
     
     def on_unit_destroyed(self, tag: str):
         to_remove = []

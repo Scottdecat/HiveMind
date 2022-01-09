@@ -1,11 +1,11 @@
-from sc2 import UnitTypeId, BotAI
-
-from .supply_mechanic.supply_mechanic_interface import SupplyMechanicInterface
-from .spending_interface import SpendingInterface
-from ...util.priority_queue import PriorityQueue
-from bot.services.state_service import StateService
 import bot.injector as injector
+from bot.services.state_service import StateService
+from sc2 import BotAI, UnitTypeId
+
+from ...util.priority_queue import PriorityQueue
 from .build_order.build_order import BORepository, BORunner, BOStep
+from .spending_interface import SpendingInterface
+from .supply_mechanic.supply_mechanic_interface import SupplyMechanicInterface
 
 LARVA_RATE_PER_MINUTE = 11.658
 

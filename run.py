@@ -1,20 +1,20 @@
 # Based on https://github.com/mindme333/AdditionalPylons
 
-import random
 import argparse
-
-import sys
 import asyncio
 import logging
+import random
+import sys
 
-import sc2, sys
-from sc2 import Race, Difficulty
+import sc2
+from sc2 import Difficulty, Race
+from sc2.client import Client
 from sc2.player import Bot, Computer
 from sc2.sc2process import SC2Process
-from sc2.client import Client
 
 # Load bot
 from bot import MyBot
+
 bot = Bot(Race.Zerg, MyBot())
 
 # Run ladder game
