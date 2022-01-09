@@ -1,18 +1,17 @@
-from typing import List, Dict
-from enum import Enum
 from collections import defaultdict
+from enum import Enum
+from typing import Dict, List, Tuple
 
-from sc2 import UnitTypeId, Race
-from sc2.ids.upgrade_id import UpgradeId
-
-from bot.services.state_service import StateService
 import bot.injector as injector
-from bot.util.priority_queue import PriorityQueue
-from bot.services.unit_type_service import UnitTypeService
+from bot.logic.spending.supply_mechanic.supply_mechanic_interface import \
+    SupplyMechanicInterface
 from bot.model.unit_type_abstraction import UnitTypeAbstraction
-from bot.logic.spending.supply_mechanic.supply_mechanic_interface import SupplyMechanicInterface
 from bot.services.eco_balance_service import EcoBalanceService
-
+from bot.services.state_service import StateService
+from bot.services.unit_type_service import UnitTypeService
+from bot.util.priority_queue import PriorityQueue
+from sc2 import Race, UnitTypeId
+from sc2.ids.upgrade_id import UpgradeId
 
 """
 
@@ -119,11 +118,13 @@ class BORepository:
     def __init__(self):
         self.state: StateService = injector.inject(StateService)
     def get_standard_build_order(self) -> List[BOStep]:
-        from bot.logic.spending.build_order.standard_build_order import get_build
+        from bot.logic.spending.build_order.standard_build_order import \
+            get_build
         return get_build(self.state)
 
     def get_standard_zerg_build(self) -> List[BOStep]:
-        from bot.logic.spending.build_order.standard_zerg_build import get_build
+        from bot.logic.spending.build_order.standard_zerg_build import \
+            get_build
         return get_build(self.state)
 
     def get_standard_zvp_hl(self) -> List[BOStep]:
@@ -135,13 +136,16 @@ class BORepository:
         return get_build(self.state)
     
     def standard_build_order_comp(self) -> (Dict[UnitTypeId, int], List[UnitTypeId]):
-        from bot.logic.spending.build_order.standard_build_order import get_army_comp
+        from bot.logic.spending.build_order.standard_build_order import \
+            get_army_comp
         return get_army_comp(self.state)
     
     def standard_zvp_hl_comp(self) -> (Dict[UnitTypeId, int], List[UnitTypeId]):
-        from bot.logic.spending.build_order.standard_zvp_hl import get_army_comp
+        from bot.logic.spending.build_order.standard_zvp_hl import \
+            get_army_comp
         return get_army_comp(self.state)
 
     def standard_zvt_hlb_comp(self) -> (Dict[UnitTypeId, int], List[UnitTypeId]):
-        from bot.logic.spending.build_order.standard_zvt_hlb import get_army_comp
+        from bot.logic.spending.build_order.standard_zvt_hlb import \
+            get_army_comp
         return get_army_comp(self.state)

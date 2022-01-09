@@ -1,19 +1,20 @@
 from typing import Dict
 
-from sc2 import UnitTypeId, Race, BotAI
-
-from bot.hooks import hookable
-from bot.logic.spending.spending_interface import SpendingInterface
-from bot.util.priority_queue import PriorityQueue
-from bot.services.state_service import StateService
-from bot.model.unit_type_abstraction import UnitTypeAbstraction
-from bot.model.scouting_information import ScoutingInformation
 import bot.injector as injector
-from bot.logic.spending.build_order.build_order import BORepository, BORunner, BOAction
+from bot.hooks import hookable
+from bot.logic.spending.build_order.build_order import (BOAction, BORepository,
+                                                        BORunner)
+from bot.logic.spending.spending_interface import SpendingInterface
+from bot.model.scouting_information import ScoutingInformation
+from bot.model.unit_type_abstraction import UnitTypeAbstraction
 from bot.services.eco_balance_service import EcoBalanceService
+from bot.services.state_service import StateService
+from bot.util.priority_queue import PriorityQueue
+from sc2 import BotAI, Race, UnitTypeId
+
 
 @hookable
-class Spendingv2(SpendingInterface):
+class Spending(SpendingInterface):
     def __init__(self):
         self.state: StateService = injector.inject(StateService)
         self.eco_balance: EcoBalanceService = injector.inject(EcoBalanceService)

@@ -7,13 +7,14 @@ import random
 import sys
 
 import sc2
+# Load bot
+from bot import MyBot
 from sc2 import Difficulty, Race
 from sc2.client import Client
 from sc2.player import Bot, Computer
+from sc2.portconfig import Portconfig
+from sc2.protocol import ConnectionAlreadyClosed
 from sc2.sc2process import SC2Process
-
-# Load bot
-from bot import MyBot
 
 bot = Bot(Race.Zerg, MyBot())
 
@@ -49,7 +50,7 @@ def run_ladder_game(bot):
     # Port config
     ports = [lan_port + p for p in range(1,6)]
 
-    portconfig = sc2.portconfig.Portconfig()
+    portconfig = Portconfig()
     portconfig.shared = ports[0] # Not used
     portconfig.server = [ports[1], ports[2]]
     portconfig.players = [[ports[3], ports[4]]]

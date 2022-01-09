@@ -1,6 +1,6 @@
 {
 	"Bots": {
-		"sludge2": {
+		"SwarmLord": {
 			"Race": "Zerg",
 			"Type": "Python",
 			"RootPath": "./",

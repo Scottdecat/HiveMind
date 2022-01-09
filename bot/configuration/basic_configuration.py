@@ -14,7 +14,7 @@ from bot.logic.resource_manager.resource_manager import ResourceManager
 from bot.logic.resource_manager.resource_manager_interface import \
     ResourceManagerInterface
 from bot.logic.spending.spending_interface import SpendingInterface
-from bot.logic.spending.spending_v2 import Spendingv2
+from bot.logic.spending.spending import Spending
 from bot.logic.spending.supply_mechanic.supply_mechanic_interface import \
     SupplyMechanicInterface
 from bot.logic.spending_actions.spending_actions_interface import \
@@ -22,7 +22,6 @@ from bot.logic.spending_actions.spending_actions_interface import \
 
 from ..chat.basic_chat import BasicChat
 from ..logic.default_logic import DefaultLogic
-from ..logic.spending.default_spending import DefaultSpending
 from ..logic.spending.supply_mechanic.basic_supply import BasicSupply
 from ..logic.spending_actions.default_spending_actions import \
     DefaultSpendingActions
@@ -34,7 +33,7 @@ class BasicConfiguration(ConfigurationInterface):
         self.d = {
             ChatInterface: BasicChat,
             LogicInterface: DefaultLogic,
-            SpendingInterface: Spendingv2,
+            SpendingInterface: Spending,
             SpendingActionsInterface: DefaultSpendingActions,
             SupplyMechanicInterface: BasicSupply,
             ResourceManagerInterface: ResourceManager,

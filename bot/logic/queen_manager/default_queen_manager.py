@@ -1,19 +1,20 @@
 import math
 import random
 
-from sc2 import UnitTypeId, AbilityId
-from sc2.units import Units
-from sc2.unit import Unit
-from sc2.position import Point2, Point3
-from sc2.ids.ability_id import AbilityId
+import bot.injector as injector
+from bot.model.unit_role import UnitRole
+from bot.services.action_service import ActionService
+from bot.services.role_service import RoleService
+from bot.services.state_service import StateService
+from sc2 import AbilityId, UnitTypeId
 from sc2.data import ActionResult
+from sc2.ids.ability_id import AbilityId
+from sc2.position import Point2, Point3
+from sc2.unit import Unit
+from sc2.units import Units
 
 from .queen_manager_interface import QueenManagerInterface
-from bot.services.role_service import RoleService
-from bot.model.unit_role import UnitRole
-from bot.services.state_service import StateService
-import bot.injector as injector
-from bot.services.action_service import ActionService
+
 
 class DefaultQueenManager(QueenManagerInterface):
     def __init__(self):
@@ -33,7 +34,7 @@ class DefaultQueenManager(QueenManagerInterface):
         #things that will be set later on (not all things set later on are listed here)
         self.exactExpansionLocations: list = []
 
-    async def on_step(self, queens: Units) -> 'assigned tags':
+    async def on_step(self, queens: Units):
         self.assigned_tags = set()
 
         for queen in queens:
