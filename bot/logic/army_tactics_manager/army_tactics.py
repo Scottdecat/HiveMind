@@ -12,6 +12,7 @@ from sc2 import AbilityId, BotAI, UnitTypeId
 from sc2.position import Point2, Point3
 from sc2.units import Unit, Units
 
+from ..unit_manager.group_tactics import unit_direction
 from .army_tactics_manager_interface import ArmyTacticsManagerInterface
 
 

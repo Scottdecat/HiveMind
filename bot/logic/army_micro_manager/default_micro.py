@@ -10,7 +10,7 @@ from sc2.unit import Unit
 from sc2.unit_command import UnitCommand
 from sc2.units import Units
 
-from ..army_tactics_manager.army_tactics import unit_direction
+from ..unit_manager.group_tactics import unit_direction
 from .army_micro_manager_interface import ArmyMicroManagerInterface
 
 

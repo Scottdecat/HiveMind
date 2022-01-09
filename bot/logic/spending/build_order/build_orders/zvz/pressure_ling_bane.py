@@ -1,9 +1,8 @@
 from collections import defaultdict
 
+from bot.logic.spending.build_order.build_order import BOAction
 from sc2 import UnitTypeId
 from sc2.ids.upgrade_id import UpgradeId
-
-from bot.logic.spending.build_order.build_order import BOAction
 
 build = {
     'automatic' : [
@@ -48,13 +47,6 @@ build = {
         #[worker_count, extractor_count]
         [16, 4],
         [48, 20]
-        #[38, 2],
-        #[44, 4],
-        #[50, 5],
-        #[56, 6],
-        #[63, 7],
-        #[66, 12],
-        #[80, 18]
     ],
     'buildings' : [
         #[id, supply, worker_count, (prereq_buildings), amount]

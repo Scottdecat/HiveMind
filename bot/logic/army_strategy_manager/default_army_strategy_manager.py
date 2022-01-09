@@ -7,7 +7,7 @@ from bot.services.state_service import StateService
 from bot.util.unit_type_utils import calculate_combat_value, get_resource_value
 from sc2 import BotAI
 from sc2.position import Point2, Point3
-from sc2.units import Units
+from sc2.units import Unit, Units
 
 from .army_strategy_manager_interface import ArmyStrategyManagerInterface
 
